@@ -30,16 +30,23 @@ jobs:
           distribution: temurin
           java-version: '25'
 
-      - name: Set up current Android SDK tools
+      - name: Set up Android SDK tools
         uses: android-actions/setup-android@v4
         with:
-          packages: ''
+          packages: 'platform-tools'
           log-accepted-android-sdk-licenses: false
+
+      - name: Install Android CLI
+        shell: bash
+        run: |
+          curl -fsSL https://dl.google.com/android/cli/latest/linux_x86_64/install_root.sh | sudo bash
+          android --version
 
       - name: Install Android 17 SDK packages
         shell: bash
         run: |
-          sdkmanager --channel=3 "platform-tools" "platforms;android-37" "build-tools;37.0.0"
+          android --sdk="$ANDROID_HOME" sdk install --canary platforms/android-37 build-tools/37.0.0
+          android --sdk="$ANDROID_HOME" sdk list --canary | grep -E 'android-37|37\.0\.0' || true
 
       - name: Set up Gradle cache
         uses: gradle/actions/setup-gradle@v4
