@@ -45,11 +45,14 @@ jobs:
       - name: Install Android 17 SDK packages
         shell: bash
         run: |
-          android --sdk="$ANDROID_HOME" sdk install --canary platforms/android-37 build-tools/37.0.0
-          android --sdk="$ANDROID_HOME" sdk list --canary | grep -E 'android-37|37\.0\.0' || true
+          android --sdk="$ANDROID_HOME" sdk install --canary platforms/android-37.0 build-tools/37.0.0
+          android --sdk="$ANDROID_HOME" sdk list --canary | grep -E 'android-37\.0|37\.0\.0' || true
 
       - name: Set up Gradle cache
         uses: gradle/actions/setup-gradle@v4
+
+      - name: Ensure Gradle wrapper is executable
+        run: chmod +x gradlew
 
       - name: Run unit tests
         run: ./gradlew test --stacktrace
