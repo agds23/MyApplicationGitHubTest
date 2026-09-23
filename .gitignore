@@ -1,0 +1,32 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Kotlin local project data
+/.kotlin/
+
+# Local secrets and signing files
+.env
+.env.*
+secrets.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Local diagnostics
+/diagnostics/
+
+/.idea/deploymentTargetSelector.xml
+/.idea/deploymentTargetDropDown.xml
