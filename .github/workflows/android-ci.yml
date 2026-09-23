@@ -19,9 +19,6 @@ jobs:
     name: Build, test and lint
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      ANDROID_HOME: /usr/local/lib/android/sdk
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
     steps:
       - name: Checkout repository
@@ -33,13 +30,16 @@ jobs:
           distribution: temurin
           java-version: '25'
 
-      - name: Install required Android SDK packages
+      - name: Set up current Android SDK tools
+        uses: android-actions/setup-android@v4
+        with:
+          packages: ''
+          log-accepted-android-sdk-licenses: false
+
+      - name: Install Android 17 SDK packages
         shell: bash
         run: |
-          SDKMANAGER="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
-          test -x "$SDKMANAGER"
-          yes | "$SDKMANAGER" --licenses > /dev/null || true
-          "$SDKMANAGER" --channel=3 "platform-tools" "platforms;android-37"
+          sdkmanager --channel=3 "platform-tools" "platforms;android-37" "build-tools;37.0.0"
 
       - name: Set up Gradle cache
         uses: gradle/actions/setup-gradle@v4
