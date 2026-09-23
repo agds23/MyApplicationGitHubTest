@@ -30,3 +30,5 @@ keystore.properties
 
 /.idea/deploymentTargetSelector.xml
 /.idea/deploymentTargetDropDown.xml
+
+/.idea/vcs.xml
