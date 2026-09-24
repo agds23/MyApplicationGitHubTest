@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">My Application - GitHub Test</string>
+    <string name="app_name">FoneGuard</string>
+    <string name="call_screening_title">Proteção de chamadas</string>
+    <string name="call_screening_description">Ative o papel de triagem de chamadas para conectar o FoneGuard ao Android.</string>
+    <string name="call_screening_status_active">Triagem de chamadas: ativa</string>
+    <string name="call_screening_status_inactive">Triagem de chamadas: ainda não ativada</string>
+    <string name="call_screening_status_unsupported">Triagem de chamadas por papel do sistema não disponível neste Android.</string>
+    <string name="call_screening_request_role">Ativar triagem de chamadas</string>
+    <string name="call_screening_allow_all_notice">Baseline ativo: neste incremento, todas as chamadas continuam permitidas.</string>
 </resources>
